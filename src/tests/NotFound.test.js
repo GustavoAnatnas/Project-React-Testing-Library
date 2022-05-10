@@ -1,7 +1,7 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
 import App from '../App';
-import renderWithRouter from '../services/renderWithRouter';
+import renderWithRouter from './renderWithRouter';
 
 describe('Desafio 4', () => {
   test('Teste se a página contém um heading h2', () => {
