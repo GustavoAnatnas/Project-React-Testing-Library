@@ -22,5 +22,20 @@ describe('Desafio 5', () => {
   });
   test('Teste se é mostrado apenas um pokémon por vez. ', () => {
     renderWithRouter(<App />);
+    const namePoke = screen.getAllByTestId('pokemon-type-button');
+    expect(namePoke).toHaveLength(namePoke.length);
+  });
+  test('Teste se a Pokédex tem os botões de filtro.', () => {
+    renderWithRouter(<App />);
+    const tipoPoke = ['Electric', 'Fire', 'Bug', 'Poison', 'Psychic', 'Normal', 'Dragon'];
+    tipoPoke.forEach((tipo) => {
+      expect(screen.getByRole('button', { name: tipo })).toBeInTheDocument();
+    });
+  });
+  test('Teste se a Pokédex contém um botão para resetar o filtro', () => {
+    renderWithRouter(<App />);
+    const bttnAll = screen.getByRole('button', { name: /all/i });
+    userEvent.click(bttnAll);
+    expect(bttnAll).toBeInTheDocument();
   });
 });
